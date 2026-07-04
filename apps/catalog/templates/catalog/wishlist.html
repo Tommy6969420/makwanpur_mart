@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}My Wishlist [Phase 3] — Makwanpur Mart{% endblock %}
+{% block content %}
+<div class="space-y-6">
+    <h1 class="font-display font-bold text-2xl text-brand-green">Saved Wishlist Stalls [Phase 3]</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-white p-5 rounded-stall border border-neutral-200 shadow-sm space-y-3">
+            <h3 class="font-display font-bold text-base text-surface-ink">Traditional Silk Saree</h3>
+            <div class="font-display font-bold text-lg text-brand-green tabular-nums">NPR 4,500</div>
+            <a href="{% url 'orders:cart' %}" class="block text-center bg-brand-marigold text-surface-ink font-display font-bold py-2 rounded-stall text-xs shadow">
+                Move Directly to Cart 🛒
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

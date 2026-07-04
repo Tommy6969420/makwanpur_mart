@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}All Products — Makwanpur Mart{% endblock %}
+{% block content %}
+<div class="space-y-6">
+    <div class="flex justify-between items-center bg-white p-5 rounded-stall border border-neutral-200 shadow-sm">
+        <h1 class="font-display font-bold text-2xl text-brand-green">All Local Bazaar Products</h1>
+        <div class="flex items-center gap-3 text-sm">
+            <span>Sort by:</span>
+            <select class="bg-surface-base border border-neutral-300 rounded-stall px-3 py-1 text-xs font-medium">
+                <option>Price: Low to High</option>
+                <option>Price: High to Low</option>
+                <option>Newest First</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {% for i in "12345678" %}
+        <div class="bg-white rounded-stall border border-neutral-200 p-4 shadow-sm flex flex-col justify-between space-y-3">
+            <div>
+                <span class="bg-brand-marigold text-surface-ink text-[10px] font-bold px-2 py-0.5 stall-flag">Verified Stall</span>
+                <h3 class="font-display font-bold text-base text-surface-ink mt-2">Bazaar Product #{{ i }}</h3>
+                <p class="text-xs text-neutral-500">Vendor: Ward 4 Collection</p>
+                <div class="font-display font-bold text-lg text-brand-green mt-1 tabular-nums">NPR 1,200</div>
+            </div>
+            <a href="{% url 'catalog:product_detail' slug='bazaar-product' %}" class="block text-center bg-brand-green text-white py-1.5 rounded-stall text-xs font-display font-bold">View Stall Details</a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex justify-center items-center gap-2 pt-4">
+        <span class="px-3 py-1.5 bg-neutral-200 rounded-stall text-xs text-neutral-500 cursor-not-allowed">← Previous</span>
+        <span class="px-3 py-1.5 bg-brand-green text-white rounded-stall text-xs font-bold">1</span>
+        <a href="#" class="px-3 py-1.5 bg-white border border-neutral-300 rounded-stall text-xs hover:bg-neutral-100">2</a>
+        <a href="#" class="px-3 py-1.5 bg-white border border-neutral-300 rounded-stall text-xs hover:bg-neutral-100">Next →</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% comment %}
+Signature stall-flag notch tag shape.
+Usage: {% include "includes/stall_badge.html" with label="Fashion" bg_color="bg-brand-marigold" text_color="text-surface-ink" %}
+{% endcomment %}
+<span class="inline-block {{ bg_color|default:'bg-brand-marigold' }} {{ text_color|default:'text-surface-ink' }} text-small font-medium px-3 py-1 stall-flag shadow-sm">
+    {{ label }}
+</span>

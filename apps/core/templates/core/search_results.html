@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block title %}Search Results — Makwanpur Mart{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- Search Query Echo & Header -->
+    <div class="bg-white p-6 rounded-stall border border-neutral-200 shadow-sm">
+        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+            <div>
+                <h1 class="font-display font-bold text-2xl text-brand-green">
+                    Results for "<span class="text-brand-marigold">{{ request.GET.q|default:"Kurta" }}</span>"
+                </h1>
+                <p class="text-sm text-neutral-600">Showing <span class="font-bold text-surface-ink">12 items</span> found across verified Hetauda stalls</p>
+            </div>
+            <!-- Secondary Search Bar -->
+            <form action="{% url 'core:search_results' %}" method="get" class="flex gap-2 max-w-sm">
+                <input type="text" name="q" value="{{ request.GET.q|default:'Kurta' }}" class="bg-surface-base border border-neutral-300 rounded-stall px-3 py-1.5 text-sm flex-grow">
+                <button type="submit" class="bg-brand-green text-white px-4 py-1.5 rounded-stall text-sm font-display font-semibold">Update</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Layout: Filter Sidebar + Result Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <!-- Filter Sidebar with HTMX Live Swap -->
+        <div class="bg-white p-5 rounded-stall border border-neutral-200 shadow-sm space-y-6 h-fit">
+            <h3 class="font-display font-bold text-lg text-brand-green border-b pb-2">Filter Bazaar Stalls</h3>
+            
+            <form hx-get="{% url 'core:search_results' %}" hx-target="#search-results-grid" hx-indicator="#global-indicator" class="space-y-5">
+                <input type="hidden" name="q" value="{{ request.GET.q|default:'Kurta' }}">
+                
+                <!-- Category Filter -->
+                <div class="space-y-2">
+                    <label class="block text-xs font-bold text-neutral-700 uppercase tracking-wider">Category</label>
+                    <div class="space-y-1.5 text-sm">
+                        <label class="flex items-center gap-2"><input type="checkbox" name="cat" value="fashion" checked class="rounded text-brand-green"> <span>Fashion &amp; Clothing (9)</span></label>
+                        <label class="flex items-center gap-2"><input type="checkbox" name="cat" value="beauty" class="rounded text-brand-green"> <span>Beauty &amp; Cosmetics (3)</span></label>
+                        <label class="flex items-center gap-2"><input type="checkbox" name="cat" value="handicraft" class="rounded text-brand-green"> <span>Local Handicrafts (0)</span></label>
+                    </div>
+                </div>
+
+                <!-- Price Range Filter -->
+                <div class="space-y-2">
+                    <label class="block text-xs font-bold text-neutral-700 uppercase tracking-wider">Max Price (NPR)</label>
+                    <input type="range" name="max_price" min="500" max="10000" step="500" value="5000" class="w-full accent-brand-green">
+                    <div class="flex justify-between text-xs text-neutral-500 tabular-nums">
+                        <span>NPR 500</span>
+                        <span>NPR 5,000+</span>
+                    </div>
+                </div>
+
+                <!-- Ward Filter -->
+                <div class="space-y-2">
+                    <label class="block text-xs font-bold text-neutral-700 uppercase tracking-wider">Stall Location (Hetauda)</label>
+                    <select name="ward" class="w-full bg-surface-base border border-neutral-300 rounded-stall px-2.5 py-1.5 text-sm">
+                        <option value="">All Wards (1-19)</option>
+                        <option value="4">Ward 4 (Main Bazaar)</option>
+                        <option value="2">Ward 2 (Bank Road)</option>
+                        <option value="10">Ward 10 (Industrial District)</option>
+                    </select>
+                </div>
+
+                <!-- Verified Only -->
+                <div class="pt-2 border-t">
+                    <label class="flex items-center gap-2 text-sm font-medium text-brand-indigo">
+                        <input type="checkbox" name="verified" value="1" checked class="rounded text-brand-indigo">
+                        <span>Verified Vendors Only</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="w-full bg-brand-green text-white font-display font-semibold py-2 rounded-stall text-sm shadow">
+                    Apply Filters
+                </button>
+            </form>
+        </div>
+
+        <!-- Search Results Grid Area -->
+        <div id="search-results-grid" class="lg:col-span-3 space-y-6">
+            <!-- Sorting Header -->
+            <div class="flex justify-between items-center bg-white px-4 py-2.5 rounded-stall border border-neutral-200 text-sm">
+                <span class="text-neutral-600">Sorted by: <strong class="text-surface-ink">Relevance &amp; Stock</strong></span>
+                <select hx-get="{% url 'core:search_results' %}" hx-target="#search-results-grid" name="sort" class="bg-surface-base border border-neutral-300 rounded-stall px-2.5 py-1 text-xs font-medium">
+                    <option value="relevance">Relevance</option>
+                    <option value="price_asc">Price: Low to High</option>
+                    <option value="price_desc">Price: High to Low</option>
+                    <option value="newest">Newest Stalls First</option>
+                </select>
+            </div>
+
+            <!-- Results Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                {% for i in "123456" %}
+                <div class="bg-white rounded-stall border border-neutral-200 overflow-hidden shadow-sm flex flex-col justify-between">
+                    <div class="p-4 space-y-2">
+                        <div class="flex justify-between items-start">
+                            <span class="bg-brand-marigold text-surface-ink text-[10px] font-bold px-2 py-0.5 stall-flag">Fashion</span>
+                            <span class="text-xs text-neutral-400">Ward 4</span>
+                        </div>
+                        <h4 class="font-display font-bold text-base text-surface-ink">Designer Party Wear Kurta #{{ i }}</h4>
+                        <p class="text-xs text-neutral-500">Sold by <strong class="text-brand-indigo">Shrestha Cloth Store</strong></p>
+                        <div class="font-display font-bold text-lg text-brand-green tabular-nums">NPR 1,750</div>
+                    </div>
+                    <div class="p-4 pt-0 flex justify-between items-center border-t border-neutral-100 mt-2">
+                        <span class="text-xs text-state-success">✓ In Stock</span>
+                        <a href="{% url 'catalog:product_detail' slug='designer-kurta' %}" class="bg-brand-green text-white px-3 py-1.5 rounded-stall text-xs font-display font-bold hover:brightness-110">View Details</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Empty State Demonstration (Visible when query yields zero results) -->
+            <div class="hidden bg-white p-10 rounded-stall border border-neutral-200 text-center space-y-4">
+                <div class="text-5xl">🔍</div>
+                <h3 class="font-display font-bold text-xl text-brand-green">No Exact Matches Found in Hetauda</h3>
+                <p class="text-sm text-neutral-600 max-w-md mx-auto">
+                    We couldn't find stalls matching your exact filter. Try clearing ward filters or browse our popular categories below.
+                </p>
+                <div class="pt-2 flex justify-center gap-3">
+                    <a href="{% url 'catalog:category_list' %}" class="bg-brand-green text-white font-display font-semibold px-5 py-2 rounded-stall text-sm">Browse All Categories</a>
+                    <a href="{% url 'support:complaint_form' %}" class="border border-brand-marigold text-surface-ink font-display font-semibold px-5 py-2 rounded-stall text-sm">Request Item From Local Shop</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

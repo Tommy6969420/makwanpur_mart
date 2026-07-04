@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Fashion & Clothing — Makwanpur Mart{% endblock %}
+{% block content %}
+<div class="space-y-6">
+    <div class="bg-white p-6 rounded-stall border border-neutral-200 shadow-sm flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+        <div>
+            <div class="flex items-center gap-2">
+                <h1 class="font-display font-bold text-3xl text-brand-green">Fashion &amp; Clothing</h1>
+                <span class="bg-brand-marigold text-surface-ink text-xs font-bold px-2.5 py-0.5 stall-flag">Phase 1</span>
+            </div>
+            <p class="text-sm text-neutral-600 mt-1">Showing 45 items from 18 verified Hetauda stalls</p>
+        </div>
+        <div class="flex gap-2">
+            <select class="bg-surface-base border border-neutral-300 rounded-stall px-3 py-1.5 text-xs font-semibold">
+                <option>Subcategory: All</option>
+                <option>Women's Kurtas</option>
+                <option>Traditional Sarees</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {% for i in "1234" %}
+        <div class="bg-white rounded-stall border border-neutral-200 overflow-hidden shadow-sm flex flex-col justify-between">
+            <div class="p-4 space-y-2">
+                <div class="flex justify-between items-start text-xs">
+                    <span class="text-brand-indigo font-bold">Shrestha Cloth Store</span>
+                    <span class="text-neutral-400">Ward 4</span>
+                </div>
+                <h3 class="font-display font-bold text-base text-surface-ink">Cotton Printed Kurta #{{ i }}</h3>
+                <div class="font-display font-bold text-lg text-brand-green tabular-nums">NPR 1,650</div>
+            </div>
+            <div class="p-4 pt-0 border-t border-neutral-100 mt-2 flex justify-between items-center">
+                <span class="text-xs text-state-success">✓ In Stock</span>
+                <a href="{% url 'catalog:product_detail' slug='printed-kurta' %}" class="bg-brand-green text-white px-3 py-1.5 rounded-stall text-xs font-display font-bold">View Item</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

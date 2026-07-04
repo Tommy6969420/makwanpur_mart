@@ -1,0 +1,263 @@
+{% extends "base.html" %}
+{% block title %}Makwanpur Mart — Hetauda's Fast & Reliable Local Bazaar{% endblock %}
+
+{% block content %}
+<div class="space-y-12">
+    <!-- Hero Section: Explicitly positioning on delivery speed & return ease vs Daraz -->
+    <section class="bg-brand-green text-white rounded-stall p-6 sm:p-10 shadow-lg relative overflow-hidden border-2 border-brand-marigold/30">
+        <div class="max-w-3xl relative z-10 space-y-4">
+            <div class="inline-block bg-brand-marigold text-surface-ink font-display font-bold text-xs px-3 py-1 stall-flag uppercase tracking-wider">
+                Makwanpur District Exclusive
+            </div>
+            <h1 class="font-display font-bold text-3xl sm:text-5xl leading-tight text-white">
+                Why Wait 4 Days For Kathmandu Delivery? <span class="text-brand-marigold">Get It Today in Hetauda.</span>
+            </h1>
+            <p class="text-base sm:text-lg text-neutral-200 leading-relaxed">
+                Makwanpur Mart connects you directly to Hetauda's verified local shops (Wards 1–19). Delivered within hours, not days. Hassle-free doorstep returns handled by local mediators you trust.
+            </p>
+            <div class="pt-4 flex flex-wrap items-center gap-4">
+                <a href="{% url 'catalog:category_list' %}" class="bg-brand-marigold text-surface-ink font-display font-bold px-6 py-3 rounded-stall hover:brightness-105 transition shadow-md flex items-center gap-2">
+                    <span>Explore Local Stalls</span>
+                    <span>→</span>
+                </a>
+                <a href="{% url 'core:return_policy' %}" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 font-display font-semibold px-5 py-3 rounded-stall transition text-sm">
+                    Read Our Return &amp; Replacement Promise
+                </a>
+            </div>
+            <div class="pt-4 grid grid-cols-3 gap-4 border-t border-neutral-700/60 text-xs sm:text-sm">
+                <div>
+                    <strong class="block text-brand-marigold font-display text-lg">2-4 Hours</strong>
+                    <span>Average Delivery (Wards 1-10)</span>
+                </div>
+                <div>
+                    <strong class="block text-brand-marigold font-display text-lg">100% Local</strong>
+                    <span>Verified Door-to-Door Vendors</span>
+                </div>
+                <div>
+                    <strong class="block text-brand-marigold font-display text-lg">Easy Returns</strong>
+                    <span>Instant Replacement &amp; COD</span>
+                </div>
+            </div>
+        </div>
+        <!-- Decorative subtle background icon -->
+        <div class="absolute right-0 bottom-0 translate-x-10 translate-y-10 opacity-10 font-display font-bold text-9xl pointer-events-none text-white">
+            MM
+        </div>
+    </section>
+
+    <!-- Category Navigation (Visual Primary Browse Path) -->
+    <section class="space-y-4">
+        <div class="flex justify-between items-end">
+            <div>
+                <h2 class="font-display font-bold text-2xl text-brand-green">Browse Hetauda Stalls by Category</h2>
+                <p class="text-sm text-neutral-600">Launch order prioritized for quality assurance &amp; verified inventory</p>
+            </div>
+            <a href="{% url 'catalog:category_list' %}" class="text-sm font-semibold text-brand-indigo hover:underline">View All Categories →</a>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <!-- Category Card 1: Fashion -->
+            <a href="{% url 'catalog:category_detail' slug='fashion' %}" class="bg-white p-5 rounded-stall border border-neutral-200 hover:border-brand-marigold transition shadow-sm group text-center space-y-3">
+                <div class="w-16 h-16 mx-auto bg-brand-green/10 text-brand-green rounded-full flex items-center justify-center text-3xl group-hover:scale-110 transition">
+                    👗
+                </div>
+                <div>
+                    <h3 class="font-display font-bold text-lg text-surface-ink group-hover:text-brand-green">Fashion &amp; Clothing</h3>
+                    <span class="inline-block bg-brand-marigold text-surface-ink text-xs font-semibold px-2.5 py-0.5 stall-flag mt-1">Phase 1 Launch</span>
+                </div>
+                <p class="text-xs text-neutral-500">Kurtas, Sarees, Men's Wear &amp; Kids</p>
+            </a>
+
+            <!-- Category Card 2: Beauty -->
+            <a href="{% url 'catalog:category_detail' slug='beauty' %}" class="bg-white p-5 rounded-stall border border-neutral-200 hover:border-brand-marigold transition shadow-sm group text-center space-y-3">
+                <div class="w-16 h-16 mx-auto bg-brand-green/10 text-brand-green rounded-full flex items-center justify-center text-3xl group-hover:scale-110 transition">
+                    💄
+                </div>
+                <div>
+                    <h3 class="font-display font-bold text-lg text-surface-ink group-hover:text-brand-green">Beauty &amp; Cosmetics</h3>
+                    <span class="inline-block bg-brand-marigold text-surface-ink text-xs font-semibold px-2.5 py-0.5 stall-flag mt-1">Phase 1 Launch</span>
+                </div>
+                <p class="text-xs text-neutral-500">Skincare, Haircare &amp; Organic Wellness</p>
+            </a>
+
+            <!-- Category Card 3: Food (Phase 2) -->
+            <a href="{% url 'catalog:category_detail' slug='food' %}" class="bg-white p-5 rounded-stall border border-neutral-200 hover:border-brand-indigo transition shadow-sm group text-center space-y-3 relative opacity-90">
+                <div class="w-16 h-16 mx-auto bg-brand-indigo/10 text-brand-indigo rounded-full flex items-center justify-center text-3xl group-hover:scale-110 transition">
+                    🥟
+                </div>
+                <div>
+                    <h3 class="font-display font-bold text-lg text-surface-ink group-hover:text-brand-indigo">Local Food &amp; Snacks</h3>
+                    <span class="inline-block bg-brand-indigo text-white text-xs font-semibold px-2.5 py-0.5 stall-flag mt-1">Phase 2 (Hygiene SLA)</span>
+                </div>
+                <p class="text-xs text-neutral-500">Gundruk, Churpi, Sweets &amp; Bakery</p>
+            </a>
+
+            <!-- Category Card 4: Handicrafts -->
+            <a href="{% url 'catalog:category_detail' slug='handicrafts' %}" class="bg-white p-5 rounded-stall border border-neutral-200 hover:border-brand-green transition shadow-sm group text-center space-y-3">
+                <div class="w-16 h-16 mx-auto bg-neutral-100 text-neutral-700 rounded-full flex items-center justify-center text-3xl group-hover:scale-110 transition">
+                    🧶
+                </div>
+                <div>
+                    <h3 class="font-display font-bold text-lg text-surface-ink">Local Handicrafts</h3>
+                    <span class="inline-block bg-neutral-200 text-surface-ink text-xs font-semibold px-2.5 py-0.5 stall-flag mt-1">Cottage Exempt</span>
+                </div>
+                <p class="text-xs text-neutral-500">Lokta Paper, Dhaka &amp; Bamboo Craft</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Featured / Trending Products Section -->
+    <section class="space-y-4">
+        <div class="flex justify-between items-center">
+            <h2 class="font-display font-bold text-2xl text-brand-green">Trending in Hetauda Bazaar</h2>
+            <a href="{% url 'catalog:product_list' %}" class="text-sm font-semibold text-brand-indigo hover:underline">View All Stalls →</a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Product Card Wireframe 1 -->
+            <div class="bg-white rounded-stall border border-neutral-200 overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                <div>
+                    <div class="bg-neutral-100 h-48 relative flex items-center justify-center text-4xl">
+                        👘
+                        <span class="absolute top-2 left-2 bg-brand-marigold text-surface-ink text-[11px] font-bold px-2 py-0.5 stall-flag">Hot Seller</span>
+                    </div>
+                    <div class="p-4 space-y-2">
+                        <div class="flex items-center justify-between text-xs">
+                            <a href="{% url 'catalog:vendor_storefront' slug='new-shrestha-cloth-store' %}" class="text-brand-indigo font-semibold hover:underline flex items-center gap-1">
+                                <span>Shrestha Cloth Store</span>
+                                <span class="bg-brand-indigo text-white px-1.5 py-0.2 text-[9px] stall-flag">Verified</span>
+                            </a>
+                            <span class="text-neutral-400">Ward 4</span>
+                        </div>
+                        <h3 class="font-display font-bold text-base text-surface-ink line-clamp-1">Traditional Cotton Kurta Set</h3>
+                        <div class="flex items-baseline gap-2">
+                            <span class="font-display font-bold text-lg text-brand-green tabular-nums">NPR 1,850</span>
+                            <span class="text-xs text-neutral-400 line-through tabular-nums">NPR 2,200</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 pt-0 border-t border-neutral-100 mt-2 flex items-center justify-between gap-2">
+                    <span class="text-[11px] text-state-success font-medium">✓ In Stock (Delivery today)</span>
+                    <a href="{% url 'catalog:product_detail' slug='traditional-cotton-kurta-set' %}" class="bg-brand-green text-white px-3 py-1.5 rounded-stall text-xs font-display font-bold hover:brightness-110 transition">
+                        View Stall
+                    </a>
+                </div>
+            </div>
+
+            <!-- Product Card Wireframe 2 -->
+            <div class="bg-white rounded-stall border border-neutral-200 overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                <div>
+                    <div class="bg-neutral-100 h-48 relative flex items-center justify-center text-4xl">
+                        🧴
+                    </div>
+                    <div class="p-4 space-y-2">
+                        <div class="flex items-center justify-between text-xs">
+                            <a href="#" class="text-brand-indigo font-semibold hover:underline flex items-center gap-1">
+                                <span>Himalayan Beauty Hub</span>
+                                <span class="bg-brand-indigo text-white px-1.5 py-0.2 text-[9px] stall-flag">Verified</span>
+                            </a>
+                            <span class="text-neutral-400">Ward 2</span>
+                        </div>
+                        <h3 class="font-display font-bold text-base text-surface-ink line-clamp-1">Organic Kumkumadi Face Glow Oil</h3>
+                        <div class="flex items-baseline gap-2">
+                            <span class="font-display font-bold text-lg text-brand-green tabular-nums">NPR 950</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 pt-0 border-t border-neutral-100 mt-2 flex items-center justify-between gap-2">
+                    <span class="text-[11px] text-state-success font-medium">✓ In Stock</span>
+                    <a href="{% url 'catalog:product_detail' slug='kumkumadi-face-glow-oil' %}" class="bg-brand-green text-white px-3 py-1.5 rounded-stall text-xs font-display font-bold hover:brightness-110 transition">
+                        View Stall
+                    </a>
+                </div>
+            </div>
+
+            <!-- Product Card Wireframe 3 -->
+            <div class="bg-white rounded-stall border border-neutral-200 overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                <div>
+                    <div class="bg-neutral-100 h-48 relative flex items-center justify-center text-4xl">
+                        🧣
+                    </div>
+                    <div class="p-4 space-y-2">
+                        <div class="flex items-center justify-between text-xs">
+                            <a href="#" class="text-brand-indigo font-semibold hover:underline flex items-center gap-1">
+                                <span>Makwanpur Handloom</span>
+                                <span class="bg-brand-indigo text-white px-1.5 py-0.2 text-[9px] stall-flag">Verified</span>
+                            </a>
+                            <span class="text-neutral-400">Ward 10</span>
+                        </div>
+                        <h3 class="font-display font-bold text-base text-surface-ink line-clamp-1">Handwoven Palpali Dhaka Shawl</h3>
+                        <div class="flex items-baseline gap-2">
+                            <span class="font-display font-bold text-lg text-brand-green tabular-nums">NPR 1,450</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 pt-0 border-t border-neutral-100 mt-2 flex items-center justify-between gap-2">
+                    <span class="text-[11px] text-state-warning font-medium">⚠️ Low Stock (2 left)</span>
+                    <a href="{% url 'catalog:product_detail' slug='dhaka-shawl' %}" class="bg-brand-green text-white px-3 py-1.5 rounded-stall text-xs font-display font-bold hover:brightness-110 transition">
+                        View Stall
+                    </a>
+                </div>
+            </div>
+
+            <!-- Product Card Wireframe 4 -->
+            <div class="bg-white rounded-stall border border-neutral-200 overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                <div>
+                    <div class="bg-neutral-100 h-48 relative flex items-center justify-center text-4xl">
+                        🥻
+                    </div>
+                    <div class="p-4 space-y-2">
+                        <div class="flex items-center justify-between text-xs">
+                            <a href="#" class="text-brand-indigo font-semibold hover:underline flex items-center gap-1">
+                                <span>Radha Krishna Collection</span>
+                                <span class="bg-brand-indigo text-white px-1.5 py-0.2 text-[9px] stall-flag">Verified</span>
+                            </a>
+                            <span class="text-neutral-400">Ward 4</span>
+                        </div>
+                        <h3 class="font-display font-bold text-base text-surface-ink line-clamp-1">Festive Silk Saree with Blouse Piece</h3>
+                        <div class="flex items-baseline gap-2">
+                            <span class="font-display font-bold text-lg text-brand-green tabular-nums">NPR 4,500</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 pt-0 border-t border-neutral-100 mt-2 flex items-center justify-between gap-2">
+                    <span class="text-[11px] text-state-success font-medium">✓ In Stock</span>
+                    <a href="{% url 'catalog:product_detail' slug='silk-saree' %}" class="bg-brand-green text-white px-3 py-1.5 rounded-stall text-xs font-display font-bold hover:brightness-110 transition">
+                        View Stall
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Buy Local Section (Trust Pitch & Differentiator) -->
+    <section class="bg-white rounded-stall p-8 border border-neutral-200 shadow-sm">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+            <span class="text-brand-marigold font-display font-bold text-sm uppercase tracking-wide">The Makwanpur Guarantee</span>
+            <h2 class="font-display font-bold text-3xl text-brand-green">Built For Hetauda, Not A Megacity</h2>
+            <p class="text-sm text-neutral-600">Why thousands of Hetauda shoppers are switching from national platforms to neighborhood verified stalls.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-5 bg-surface-base rounded-stall border border-neutral-200 space-y-2">
+                <div class="w-10 h-10 bg-brand-green text-white rounded-stall flex items-center justify-center font-display font-bold text-lg">⚡</div>
+                <h3 class="font-display font-bold text-lg text-surface-ink">Speed You Can Trust</h3>
+                <p class="text-xs text-neutral-600 leading-relaxed">
+                    National carriers take 3-5 days from Kathmandu. Our Hetauda riders pick up directly from local bazaar stalls and drop off at your ward within 2 to 4 hours.
+                </p>
+            </div>
+            <div class="p-5 bg-surface-base rounded-stall border border-neutral-200 space-y-2">
+                <div class="w-10 h-10 bg-brand-marigold text-surface-ink rounded-stall flex items-center justify-center font-display font-bold text-lg">🔄</div>
+                <h3 class="font-display font-bold text-lg text-surface-ink">No Return Nightmares</h3>
+                <p class="text-xs text-neutral-600 leading-relaxed">
+                    Size didn't fit? Product damaged? Every stall displays its explicit return policy. Return items right at your doorstep or visit the vendor store directly in Hetauda.
+                </p>
+            </div>
+            <div class="p-5 bg-surface-base rounded-stall border border-neutral-200 space-y-2">
+                <div class="w-10 h-10 bg-brand-indigo text-white rounded-stall flex items-center justify-center font-display font-bold text-lg">🛡️</div>
+                <h3 class="font-display font-bold text-lg text-surface-ink">Verified Local Identity</h3>
+                <p class="text-xs text-neutral-600 leading-relaxed">
+                    Every vendor is personally visited door-to-door by our founder. We verify ward registration and PAN credentials under the Electronic Commerce Act 2081.
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

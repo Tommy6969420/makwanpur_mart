@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}All Categories & Stalls — Makwanpur Mart{% endblock %}
+{% block content %}
+<div class="space-y-8">
+    <div class="bg-white p-6 rounded-stall border border-neutral-200 shadow-sm flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+        <div>
+            <h1 class="font-display font-bold text-3xl text-brand-green">Explore Hetauda Bazaar Categories</h1>
+            <p class="text-sm text-neutral-600">Curated local launch order to guarantee vendor verification and delivery speed.</p>
+        </div>
+        <span class="bg-brand-marigold text-surface-ink font-display font-bold text-xs px-3 py-1.5 stall-flag self-start">50+ Verified Stalls</span>
+    </div>
+
+    <!-- Category Grid with Subcategory Tree -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Category 1: Fashion & Clothing -->
+        <div class="bg-white p-6 rounded-stall border border-neutral-200 shadow-sm space-y-4">
+            <div class="flex justify-between items-start">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-brand-green/10 text-brand-green rounded-stall flex items-center justify-center text-2xl">👗</div>
+                    <div>
+                        <h2 class="font-display font-bold text-xl text-surface-ink">Fashion &amp; Clothing</h2>
+                        <span class="text-xs text-brand-indigo font-semibold">24 Active Vendors &bull; 180+ Products</span>
+                    </div>
+                </div>
+                <span class="bg-brand-marigold text-surface-ink text-[11px] font-bold px-2 py-0.5 stall-flag">Phase 1</span>
+            </div>
+            <!-- Subcategory Navigation -->
+            <div class="grid grid-cols-2 gap-2 pt-2 border-t text-sm">
+                <a href="{% url 'catalog:category_detail' slug='kurtas' %}" class="p-2 bg-surface-base rounded-stall hover:bg-brand-green/10 transition flex justify-between items-center">
+                    <span>Women's Kurtas &amp; Sets</span>
+                    <span class="text-xs text-neutral-400">45</span>
+                </a>
+                <a href="{% url 'catalog:category_detail' slug='sarees' %}" class="p-2 bg-surface-base rounded-stall hover:bg-brand-green/10 transition flex justify-between items-center">
+                    <span>Traditional Sarees</span>
+                    <span class="text-xs text-neutral-400">32</span>
+                </a>
+                <a href="{% url 'catalog:category_detail' slug='mens' %}" class="p-2 bg-surface-base rounded-stall hover:bg-brand-green/10 transition flex justify-between items-center">
+                    <span>Men's Daura Suruwal &amp; Casuals</span>
+                    <span class="text-xs text-neutral-400">28</span>
+                </a>
+                <a href="{% url 'catalog:category_detail' slug='kids' %}" class="p-2 bg-surface-base rounded-stall hover:bg-brand-green/10 transition flex justify-between items-center">
+                    <span>Kids &amp; Infants</span>
+                    <span class="text-xs text-neutral-400">19</span>
+                </a>
+            </div>
+            <a href="{% url 'catalog:category_detail' slug='fashion' %}" class="block text-center bg-brand-green text-white font-display font-semibold py-2 rounded-stall text-xs hover:brightness-110 transition">
+                Browse All Fashion Stalls →
+            </a>
+        </div>
+
+        <!-- Category 2: Beauty & Cosmetics -->
+        <div class="bg-white p-6 rounded-stall border border-neutral-200 shadow-sm space-y-4">
+            <div class="flex justify-between items-start">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-brand-green/10 text-brand-green rounded-stall flex items-center justify-center text-2xl">💄</div>
+                    <div>
+                        <h2 class="font-display font-bold text-xl text-surface-ink">Beauty &amp; Cosmetics</h2>
+                        <span class="text-xs text-brand-indigo font-semibold">12 Active Vendors &bull; 65 Products</span>
+                    </div>
+                </div>
+                <span class="bg-brand-marigold text-surface-ink text-[11px] font-bold px-2 py-0.5 stall-flag">Phase 1</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 pt-2 border-t text-sm">
+                <a href="{% url 'catalog:category_detail' slug='skincare' %}" class="p-2 bg-surface-base rounded-stall hover:bg-brand-green/10 transition flex justify-between">
+                    <span>Skincare &amp; Face Oils</span>
+                    <span class="text-xs text-neutral-400">24</span>
+                </a>
+                <a href="{% url 'catalog:category_detail' slug='haircare' %}" class="p-2 bg-surface-base rounded-stall hover:bg-brand-green/10 transition flex justify-between">
+                    <span>Ayurvedic Haircare</span>
+                    <span class="text-xs text-neutral-400">18</span>
+                </a>
+            </div>
+            <a href="{% url 'catalog:category_detail' slug='beauty' %}" class="block text-center bg-brand-green text-white font-display font-semibold py-2 rounded-stall text-xs hover:brightness-110 transition">
+                Browse All Beauty Stalls →
+            </a>
+        </div>
+
+        <!-- Category 3: Local Food & Snacks (Phase 2) -->
+        <div class="bg-white p-6 rounded-stall border border-neutral-200 shadow-sm space-y-4 opacity-90">
+            <div class="flex justify-between items-start">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-brand-indigo/10 text-brand-indigo rounded-stall flex items-center justify-center text-2xl">🥟</div>
+                    <div>
+                        <h2 class="font-display font-bold text-xl text-surface-ink">Local Food &amp; Snacks</h2>
+                        <span class="text-xs text-neutral-500">Hygiene Compliance Verification Pending</span>
+                    </div>
+                </div>
+                <span class="bg-brand-indigo text-white text-[11px] font-bold px-2 py-0.5 stall-flag">Phase 2</span>
+            </div>
+            <p class="text-xs text-neutral-600 leading-relaxed">
+                Food vendors require distinct municipal hygiene verification under Hetauda guidelines and tighter 45-minute delivery SLAs. Launching soon!
+            </p>
+        </div>
+
+        <!-- Empty State Demonstration for New Category without vendors yet -->
+        <div class="bg-white p-6 rounded-stall border border-neutral-200 shadow-sm space-y-4 text-center flex flex-col justify-center items-center">
+            <div class="text-4xl text-neutral-300">📦</div>
+            <h3 class="font-display font-bold text-lg text-surface-ink">Electronics &amp; Home Accessories</h3>
+            <p class="text-xs text-neutral-500 max-w-sm">No active verified stalls have launched in this category yet. Are you a local Hetauda shopkeeper?</p>
+            <a href="{% url 'accounts:vendor_register' %}" class="bg-brand-indigo text-white font-display font-semibold px-4 py-1.5 rounded-stall text-xs">Be the First Vendor (Free Yr 1)</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

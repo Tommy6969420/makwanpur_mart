@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}Shopping Cart — Makwanpur Mart{% endblock %}
+{% block content %}
+<div class="max-w-4xl mx-auto space-y-6">
+    <h1 class="font-display font-bold text-3xl text-brand-green">Your Bazaar Shopping Cart</h1>
+
+    <!-- Multi-Vendor Shipment Notice -->
+    <div class="p-4 bg-state-info/10 border border-state-info/30 rounded-stall text-xs text-state-info flex items-center gap-2">
+        <span>ℹ️</span>
+        <span><strong>Multi-Vendor Notice:</strong> Items from different Hetauda stalls are dispatched via separate local delivery riders to ensure 2-4 hour speed from each shop.</span>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Cart Items Grouped by Vendor -->
+        <div class="lg:col-span-2 space-y-6">
+            <!-- Group 1: Shrestha Cloth Store -->
+            <div class="bg-white p-5 rounded-stall border border-neutral-200 shadow-sm space-y-4">
+                <div class="flex justify-between items-center border-b pb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="font-display font-bold text-base text-surface-ink">Shrestha Cloth Store</span>
+                        <span class="bg-brand-indigo text-white text-[10px] px-2 py-0.5 stall-flag">Ward #4</span>
+                    </div>
+                    <span class="text-xs text-state-success font-semibold">⚡ Ships in ~2 hrs</span>
+                </div>
+
+                <!-- Item Row -->
+                <div class="flex items-center justify-between gap-4 py-2">
+                    <div class="flex items-center gap-3">
+                        <div class="w-14 h-14 bg-surface-base rounded-stall flex items-center justify-center text-2xl border">👘</div>
+                        <div>
+                            <h4 class="font-display font-bold text-sm text-surface-ink">Traditional Cotton Kurta Set</h4>
+                            <span class="text-xs text-neutral-500">Size: M &bull; NPR 1,850 each</span>
+                        </div>
+                    </div>
+                    <!-- Inline HTMX Quantity Adjuster -->
+                    <div class="flex items-center gap-2">
+                        <button hx-post="#" class="w-7 h-7 bg-surface-base border rounded text-xs font-bold">-</button>
+                        <span class="font-bold text-sm tabular-nums">1</span>
+                        <button hx-post="#" class="w-7 h-7 bg-surface-base border rounded text-xs font-bold">+</button>
+                    </div>
+                    <div class="text-right">
+                        <span class="font-display font-bold text-base text-brand-green tabular-nums">NPR 1,850</span>
+                        <button class="block text-xs text-state-error hover:underline ml-auto">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group 2: Himalayan Beauty Hub -->
+            <div class="bg-white p-5 rounded-stall border border-neutral-200 shadow-sm space-y-4">
+                <div class="flex justify-between items-center border-b pb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="font-display font-bold text-base text-surface-ink">Himalayan Beauty Hub</span>
+                        <span class="bg-brand-indigo text-white text-[10px] px-2 py-0.5 stall-flag">Ward #2</span>
+                    </div>
+                    <span class="text-xs text-state-success font-semibold">⚡ Ships in ~3 hrs</span>
+                </div>
+                <div class="flex items-center justify-between gap-4 py-2">
+                    <div class="flex items-center gap-3">
+                        <div class="w-14 h-14 bg-surface-base rounded-stall flex items-center justify-center text-2xl border">🧴</div>
+                        <div>
+                            <h4 class="font-display font-bold text-sm text-surface-ink">Organic Face Glow Oil</h4>
+                            <span class="text-xs text-neutral-500">NPR 950 each</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button hx-post="#" class="w-7 h-7 bg-surface-base border rounded text-xs font-bold">-</button>
+                        <span class="font-bold text-sm tabular-nums">1</span>
+                        <button hx-post="#" class="w-7 h-7 bg-surface-base border rounded text-xs font-bold">+</button>
+                    </div>
+                    <div class="text-right">
+                        <span class="font-display font-bold text-base text-brand-green tabular-nums">NPR 950</span>
+                        <button class="block text-xs text-state-error hover:underline ml-auto">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Ledger -->
+        <div class="bg-white p-6 rounded-stall border border-neutral-200 shadow-sm h-fit space-y-4">
+            <h3 class="font-display font-bold text-lg text-brand-green border-b pb-3">Order Summary</h3>
+            <div class="space-y-2 text-sm">
+                <div class="flex justify-between">
+                    <span class="text-neutral-600">Items Subtotal (2 items)</span>
+                    <span class="font-bold tabular-nums">NPR 2,800</span>
+                </div>
+                <div class="flex justify-between text-xs text-neutral-500">
+                    <span>Estimated Local Delivery</span>
+                    <span>Calculated at checkout</span>
+                </div>
+            </div>
+            <div class="border-t pt-3 flex justify-between items-baseline">
+                <span class="font-display font-bold text-base text-surface-ink">Total Estimate</span>
+                <span class="font-display font-bold text-2xl text-brand-green tabular-nums">NPR 2,800</span>
+            </div>
+            <a href="{% url 'orders:checkout' %}" class="block text-center w-full bg-brand-marigold text-surface-ink font-display font-bold text-lg py-3 rounded-stall hover:brightness-105 transition shadow-md">
+                Proceed to Checkout →
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

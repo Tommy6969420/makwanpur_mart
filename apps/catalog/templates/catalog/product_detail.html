@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block title %}Traditional Cotton Kurta Set — Makwanpur Mart{% endblock %}
+
+{% block content %}
+<div class="space-y-8">
+    <!-- Breadcrumb -->
+    <nav class="text-xs text-neutral-500 flex items-center gap-2">
+        <a href="{% url 'core:home' %}" class="hover:underline">Bazaar Home</a> <span>/</span>
+        <a href="{% url 'catalog:category_list' %}" class="hover:underline">Fashion &amp; Clothing</a> <span>/</span>
+        <span class="text-surface-ink font-semibold">Traditional Cotton Kurta Set</span>
+    </nav>
+
+    <!-- Main Product Section -->
+    <div class="bg-white rounded-stall border border-neutral-200 p-6 sm:p-8 shadow-sm grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Image Gallery Area -->
+        <div class="space-y-4">
+            <div class="bg-surface-base rounded-stall h-80 sm:h-96 flex items-center justify-center text-7xl border border-neutral-200 relative">
+                👘
+                <span class="absolute top-4 left-4 bg-brand-marigold text-surface-ink font-display font-bold text-xs px-3 py-1 stall-flag">Phase 1 Launch</span>
+            </div>
+            <div class="grid grid-cols-4 gap-2">
+                <div class="bg-surface-base h-20 rounded-stall border-2 border-brand-green flex items-center justify-center text-2xl cursor-pointer">👘</div>
+                <div class="bg-surface-base h-20 rounded-stall border border-neutral-200 flex items-center justify-center text-2xl cursor-pointer opacity-70">🧣</div>
+                <div class="bg-surface-base h-20 rounded-stall border border-neutral-200 flex items-center justify-center text-2xl cursor-pointer opacity-70">🧵</div>
+                <div class="bg-surface-base h-20 rounded-stall border border-neutral-200 flex items-center justify-center text-2xl cursor-pointer opacity-70">🏷️</div>
+            </div>
+        </div>
+
+        <!-- Details & High Stakes Buying Elements -->
+        <div class="space-y-6 flex flex-col justify-between">
+            <div class="space-y-4">
+                <!-- VENDOR TRUST BADGE LINKED TO STOREFRONT (CRITICAL PROMPT ELEMENT) -->
+                <div class="flex items-center justify-between p-3 bg-surface-base rounded-stall border border-neutral-300">
+                    <div>
+                        <span class="text-[11px] uppercase tracking-wider text-neutral-500 block">Sold &amp; Shipped by Verified Vendor:</span>
+                        <a href="{% url 'catalog:vendor_storefront' slug='new-shrestha-cloth-store' %}" class="font-display font-bold text-base text-brand-indigo hover:underline flex items-center gap-1.5">
+                            <span>Shrestha Cloth Store</span>
+                            <span class="bg-brand-indigo text-white text-[10px] px-2 py-0.5 stall-flag">Verified Vendor</span>
+                        </a>
+                    </div>
+                    <div class="text-right text-xs text-neutral-600">
+                        <strong>Ward #4</strong><br>Main Bazaar Road
+                    </div>
+                </div>
+
+                <h1 class="font-display font-bold text-2xl sm:text-3xl text-surface-ink">Traditional Handloom Cotton Kurta Set with Dupatta</h1>
+
+                <!-- Price Breakdown & Stock Status -->
+                <div class="flex flex-wrap items-baseline justify-between gap-4 py-3 border-y border-neutral-200">
+                    <div class="flex items-baseline gap-3">
+                        <span class="font-display font-bold text-3xl text-brand-green tabular-nums">NPR 1,850</span>
+                        <span class="text-sm text-neutral-400 line-through tabular-nums">NPR 2,200</span>
+                        <span class="text-xs bg-state-success/15 text-state-success font-bold px-2 py-0.5 rounded">Save 15%</span>
+                    </div>
+                    <!-- Stock Status Badge -->
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-state-success bg-state-success/10 px-3 py-1 rounded-full">
+                        <span class="w-2 h-2 rounded-full bg-state-success animate-pulse"></span>
+                        <span>In Stock (Available in Ward 4 store)</span>
+                    </div>
+                </div>
+
+                <!-- Estimated Local Delivery SLA -->
+                <div class="p-3 bg-brand-green/5 border border-brand-green/20 rounded-stall flex items-center gap-3 text-xs">
+                    <span class="text-xl">🛵</span>
+                    <div>
+                        <strong class="text-brand-green block font-display text-sm">Hyperlocal Delivery Promise</strong>
+                        Order now for doorstep delivery across Hetauda Wards 1-10 within <strong>2 to 4 hours today</strong>. Delivery fee calculated at checkout based on ward.
+                    </div>
+                </div>
+
+                <!-- Product Variants (Size Selector) -->
+                <div class="space-y-2">
+                    <label class="block text-xs font-bold text-neutral-700 uppercase">Select Size (Variant) *</label>
+                    <div class="flex gap-2">
+                        <button class="px-4 py-2 border-2 border-brand-green bg-brand-green text-white font-display font-bold rounded-stall text-sm">M (Medium)</button>
+                        <button class="px-4 py-2 border border-neutral-300 bg-surface-base text-surface-ink font-display font-medium rounded-stall text-sm hover:border-brand-green">L (Large)</button>
+                        <button class="px-4 py-2 border border-neutral-300 bg-surface-base text-surface-ink font-display font-medium rounded-stall text-sm hover:border-brand-green">XL (Extra Large)</button>
+                    </div>
+                </div>
+
+                <!-- NON-NEGOTIABLE UNEXCLUDEABLE ELEMENT: VENDOR RETURN POLICY SHOWN EVERY PRODUCT PAGE -->
+                <div class="p-4 bg-state-warning/15 border-2 border-brand-marigold rounded-stall space-y-1">
+                    <div class="flex items-center gap-2 font-display font-bold text-sm text-surface-ink">
+                        <span>🛡️</span> Vendor Return &amp; Replacement Policy (Shrestha Cloth Store)
+                    </div>
+                    <p class="text-xs text-neutral-800 leading-relaxed">
+                        <strong>3-Day Doorstep Replacement:</strong> If the size does not fit or the fabric has any manufacturing defect, notify us within 3 days. Our local rider will pick up the item and deliver your replacement at your doorstep, or you can exchange directly at our Ward 4 physical stall.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Single Unmistakable Add to Cart CTA -->
+            <form action="{% url 'orders:cart' %}" method="post" class="pt-4 space-y-3">
+                <input type="hidden" name="product_id" value="1">
+                <div class="flex gap-4">
+                    <div class="w-24">
+                        <label class="block text-[10px] font-bold text-neutral-500 uppercase mb-1">Qty</label>
+                        <select name="quantity" class="w-full bg-surface-base border border-neutral-300 rounded-stall px-3 py-3 text-sm font-bold text-center">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="flex-grow bg-brand-marigold text-surface-ink font-display font-bold text-lg py-3 rounded-stall hover:brightness-105 transition shadow-md flex items-center justify-center gap-2">
+                        <span>🛒 Add to Cart</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Product Reviews Section [Phase 2] -->
+    <div class="bg-white rounded-stall border border-neutral-200 p-6 sm:p-8 shadow-sm space-y-4">
+        <div class="flex justify-between items-center border-b pb-4">
+            <h2 class="font-display font-bold text-xl text-brand-green">Verified Customer Reviews [Phase 2]</h2>
+            <a href="{% url 'catalog:review_form' %}" class="text-xs font-bold text-brand-indigo hover:underline">Leave Review (Verified Purchasers Only)</a>
+        </div>
+        <div class="space-y-4 text-sm">
+            <div class="p-4 bg-surface-base rounded-stall border space-y-1">
+                <div class="flex justify-between items-center text-xs">
+                    <strong class="text-surface-ink">Sita Shrestha (Ward 2)</strong>
+                    <span class="text-brand-marigold font-bold">★★★★★ (5/5)</span>
+                </div>
+                <p class="text-neutral-700">Received within 2 hours! Perfect fit and authentic pure cotton fabric.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

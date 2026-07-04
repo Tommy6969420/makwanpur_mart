@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Log In — Makwanpur Mart{% endblock %}
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-8 rounded-stall border border-neutral-200 shadow-sm my-6 space-y-6">
+    <div class="text-center">
+        <h1 class="font-display font-bold text-2xl text-brand-green">Welcome Back to the Bazaar</h1>
+        <p class="text-xs text-neutral-500 mt-1">Enter your registered phone number to sign in.</p>
+    </div>
+
+    <form action="#" method="post" class="space-y-4">
+        <div>
+            <label class="block text-xs font-bold text-neutral-700 uppercase mb-1">Mobile Phone Number *</label>
+            <div class="flex">
+                <span class="inline-flex items-center px-3 bg-neutral-100 border border-r-0 border-neutral-300 rounded-l-stall text-sm font-semibold text-neutral-600">+977</span>
+                <input type="tel" name="phone" placeholder="98XXXXXXXX" maxlength="10" required class="flex-grow bg-surface-base border border-neutral-300 rounded-r-stall px-3 py-2 text-sm tabular-nums">
+            </div>
+        </div>
+
+        <div>
+            <div class="flex justify-between items-center mb-1">
+                <label class="text-xs font-bold text-neutral-700 uppercase">Password *</label>
+                <a href="{% url 'accounts:password_reset' %}" class="text-xs text-brand-indigo hover:underline">Forgot Password?</a>
+            </div>
+            <input type="password" name="password" placeholder="Enter password" required class="w-full bg-surface-base border border-neutral-300 rounded-stall px-3 py-2 text-sm">
+        </div>
+
+        <div class="p-2.5 bg-state-info/10 text-state-info rounded-stall text-[11px] flex items-center gap-2 border border-state-info/20">
+            <span>🔒</span> Security Rate Limiting Active: Max 5 login attempts per 15 minutes.
+        </div>
+
+        <button type="submit" class="w-full bg-brand-green text-white font-display font-bold py-3 rounded-stall hover:brightness-110 transition shadow">
+            Sign In to Account
+        </button>
+    </form>
+
+    <div class="border-t pt-4 text-center space-y-2 text-xs">
+        <p>New to Makwanpur Mart? <a href="{% url 'accounts:register' %}" class="font-bold text-brand-indigo hover:underline">Register Phone Number</a></p>
+        <p>Are you a shopkeeper? <a href="{% url 'accounts:vendor_register' %}" class="font-bold text-brand-marigold hover:underline">Open Vendor Storefront</a></p>
+    </div>
+</div>
+{% endblock %}

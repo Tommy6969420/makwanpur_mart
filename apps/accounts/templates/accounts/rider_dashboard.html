@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Rider Dispatch Dashboard — Makwanpur Mart [Phase 2]{% endblock %}
+{% block content %}
+<div class="space-y-6" x-data="{ online: true }">
+    <div class="bg-brand-green text-white p-6 rounded-stall shadow-md flex justify-between items-center">
+        <div>
+            <h1 class="font-display font-bold text-2xl">Bikash Thapa (Rider #12)</h1>
+            <p class="text-xs text-neutral-300">Today's Earnings: <strong class="text-brand-marigold tabular-nums">NPR 450</strong> (9 drops completed)</p>
+        </div>
+        <!-- Online Availability Toggle -->
+        <button @click="online = !online" :class="online ? 'bg-state-success text-white' : 'bg-neutral-600 text-neutral-300'" class="px-5 py-2.5 rounded-stall font-display font-bold text-sm shadow transition">
+            <span x-text="online ? '🟢 ACTIVE ONLINE' : '🔴 OFFLINE'"></span>
+        </button>
+    </div>
+
+    <!-- Assigned Deliveries Feed -->
+    <div class="bg-white p-6 rounded-stall border border-neutral-200 shadow-sm space-y-4">
+        <h2 class="font-display font-bold text-xl text-brand-green">Active Assigned Deliveries</h2>
+        <div class="p-5 bg-surface-base rounded-stall border-2 border-brand-marigold space-y-3">
+            <div class="flex justify-between items-start">
+                <span class="bg-brand-marigold text-surface-ink font-bold text-xs px-2.5 py-0.5 stall-flag">Order #MM-8492</span>
+                <span class="text-xs font-bold text-state-warning">Ready for Vendor Pickup</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div class="p-3 bg-white rounded-stall border">
+                    <strong class="text-brand-indigo block text-xs uppercase">Pickup Vendor</strong>
+                    <span class="font-display font-bold text-base">Shrestha Cloth Store</span>
+                    <p class="text-xs text-neutral-600">Ward #4, Main Bazaar Road</p>
+                </div>
+                <div class="p-3 bg-white rounded-stall border">
+                    <strong class="text-brand-green block text-xs uppercase">Drop Customer &amp; Contact</strong>
+                    <span class="font-display font-bold text-base">Ram Shrestha</span>
+                    <p class="text-xs text-neutral-600">Ward #4 &bull; Landmark: Opp Pashupati Temple</p>
+                    <a href="tel:9845123456" class="inline-block mt-1 bg-brand-green text-white px-3 py-1 rounded text-xs font-bold">📞 Tap to Call Customer</a>
+                </div>
+            </div>
+            <div class="pt-2 flex justify-end">
+                <a href="{% url 'delivery:delivery_detail' delivery_id=1 %}" class="bg-brand-green text-white font-display font-bold px-6 py-2 rounded-stall text-sm shadow">Open Delivery Workflow →</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

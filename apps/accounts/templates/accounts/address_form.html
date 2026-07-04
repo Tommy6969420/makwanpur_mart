@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Add / Edit Address — Makwanpur Mart{% endblock %}
+{% block content %}
+<div class="max-w-xl mx-auto bg-white p-8 rounded-stall border border-neutral-200 shadow-sm my-6 space-y-6">
+    <h1 class="font-display font-bold text-2xl text-brand-green border-b pb-4">Add Delivery Address (Hetauda)</h1>
+    
+    <form action="{% url 'accounts:address_list' %}" method="post" class="space-y-4">
+        <div>
+            <label class="block text-xs font-bold text-neutral-700 uppercase mb-1">Address Label *</label>
+            <input type="text" placeholder="Home, Office, Parents House..." required class="w-full bg-surface-base border border-neutral-300 rounded-stall px-3 py-2 text-sm">
+        </div>
+        <div>
+            <label class="block text-xs font-bold text-neutral-700 uppercase mb-1">Recipient Name *</label>
+            <input type="text" value="Ram Shrestha" required class="w-full bg-surface-base border border-neutral-300 rounded-stall px-3 py-2 text-sm">
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <label class="block text-xs font-bold text-neutral-700 uppercase mb-1">Hetauda Ward No. *</label>
+                <select name="ward" required class="w-full bg-surface-base border border-neutral-300 rounded-stall px-3 py-2 text-sm">
+                    <option value="">Select Ward (1-19)</option>
+                    {% for w in "123456789" %}
+                    <option value="{{ w }}" {% if w == '4' %}selected{% endif %}>Ward #{{ w }}</option>
+                    {% endfor %}
+                    <option value="10">Ward #10</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-neutral-700 uppercase mb-1">Contact Phone *</label>
+                <input type="tel" value="9845123456" required class="w-full bg-surface-base border border-neutral-300 rounded-stall px-3 py-2 text-sm tabular-nums">
+            </div>
+        </div>
+        <div>
+            <label class="block text-xs font-bold text-neutral-700 uppercase mb-1">Street / Chowk Name *</label>
+            <input type="text" placeholder="Main Bazaar Road, Near Kantipath" required class="w-full bg-surface-base border border-neutral-300 rounded-stall px-3 py-2 text-sm">
+        </div>
+        <div>
+            <label class="block text-xs font-bold text-neutral-700 uppercase mb-1">Mandatory Landmark * (Crucial for Local Delivery)</label>
+            <input type="text" placeholder="Opposite Pashupati Temple Gate, Next to NIC Asia Bank" required class="w-full bg-surface-base border border-neutral-300 rounded-stall px-3 py-2 text-sm">
+            <span class="text-[11px] text-neutral-500">Helps our rider drop off without calling you 5 times.</span>
+        </div>
+        <div class="pt-2">
+            <label class="flex items-center gap-2 text-sm">
+                <input type="checkbox" checked class="rounded text-brand-green">
+                <span>Set as Default Delivery Address</span>
+            </label>
+        </div>
+        <div class="pt-4 flex justify-end gap-3 border-t">
+            <a href="{% url 'accounts:address_list' %}" class="px-5 py-2 border border-neutral-300 rounded-stall text-sm font-semibold">Cancel</a>
+            <button type="submit" class="bg-brand-green text-white font-display font-bold px-6 py-2 rounded-stall shadow">Save Address</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

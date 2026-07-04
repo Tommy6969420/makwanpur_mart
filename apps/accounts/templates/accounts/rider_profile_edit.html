@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Edit Rider Profile — Makwanpur Mart [Phase 2]{% endblock %}
+{% block content %}
+<div class="max-w-xl mx-auto bg-white p-8 rounded-stall border border-neutral-200 shadow-sm my-6 space-y-6">
+    <h1 class="font-display font-bold text-2xl text-brand-green border-b pb-4">Edit Rider Vehicle & Contact</h1>
+    <form action="{% url 'accounts:rider_dashboard' %}" method="post" class="space-y-4 text-sm">
+        <div>
+            <label class="block text-xs font-bold text-neutral-700 uppercase mb-1">Vehicle Registration Number *</label>
+            <input type="text" value="Ba 49 Pa 1234" required class="w-full bg-surface-base border border-neutral-300 rounded-stall px-3 py-2">
+        </div>
+        <div>
+            <label class="block text-xs font-bold text-neutral-700 uppercase mb-1">Emergency Contact Phone *</label>
+            <input type="tel" value="9845999999" required class="w-full bg-surface-base border border-neutral-300 rounded-stall px-3 py-2 tabular-nums">
+        </div>
+        <button type="submit" class="w-full bg-brand-green text-white font-display font-bold py-3 rounded-stall shadow">Save Rider Profile</button>
+    </form>
+</div>
+{% endblock %}
