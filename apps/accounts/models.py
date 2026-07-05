@@ -57,11 +57,20 @@ class Address(models.Model):
     ``latitude``/``longitude`` feed map-based delivery-zone logic; nullable
     because most addresses are entered without coordinates.
     """
-
+    class Municipality(models.TextChoices):
+        HETAUDA = "Hetauda", "hetauda"
+        BAGMATI = "Bagmati", "bagmati"
+        BAKAIYA = "Bakaiya", "bakaiya"
+        THAHA = "Thaha", "thaha"
+        MAKWANPUR_GADHI = "Makwanpur Gadhi", "makwanpur gadhi"
+        MANAHARI = "Manahari", "manahari"
+        BHIMPHEDI = "Bhimphedi", "bhimphedi"
+        INDRASAROBAR = "Indrasarobar", "indrasarobar"
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="addresses")
     label = models.CharField(max_length=50, help_text='e.g. "Home", "Shop"')
     full_address = models.TextField()
     landmark = models.TextField(blank=True, help_text="Nearby landmark — often more useful than street address.")
+    municipality = models.CharField(max_length=100, choices=Municipality.choices)
     ward_number = models.PositiveSmallIntegerField()
     is_default = models.BooleanField(default=False)
     latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
